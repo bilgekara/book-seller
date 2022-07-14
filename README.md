@@ -28,3 +28,10 @@ Content-Type: application/json
     "password":"user"
 }
 ```
+
+#### Make-admin
+```
+PUT /api/internal/make-admin/admin HTTP/1.1
+Host: localhost:8080
+Authorization: Bearer InternalApiKey1234!
+```

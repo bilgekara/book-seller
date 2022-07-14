@@ -1,6 +1,8 @@
 package com.bilgeli.bookseller.security;
 
+import com.bilgeli.bookseller.model.Role;
 import com.bilgeli.bookseller.model.User;
+import com.bilgeli.bookseller.util.SecurityUtils;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -21,6 +23,16 @@ public class UserPrincipal implements UserDetails {
     transient private String password; //don't show up on an searialized places
     transient private User user; //user for only login operation, don't use in JWT
     private Set<GrantedAuthority> authorities;
+
+    public static UserPrincipal createSuperUser(){
+        Set<GrantedAuthority> authorities = Set.of(SecurityUtils.convertToAuthority(Role.SYSTEM_MANAGER.name()));
+
+        return UserPrincipal.builder()
+                .id(-1L)
+                .username("system-administrator")
+                .authorities(authorities)
+                .build();
+    }
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;
