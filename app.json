@@ -1,5 +1,5 @@
 {
-  "name": "sha-book-seller",
+  "name": "bilgeli-book-seller",
   "buildpacks": [
     {
       "url": "heroku/maven"
