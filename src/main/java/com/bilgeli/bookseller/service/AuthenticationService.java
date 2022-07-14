@@ -17,6 +17,7 @@ public class AuthenticationService implements IAuthenticationService {
     @Autowired
     private IJwtProvider jwtProvider;
 
+    @Override
     public User signInAndReturnJWT(User signInRequest){
         Authentication authentication = authenticationManager.authenticate(
             new UsernamePasswordAuthenticationToken(signInRequest.getUsername(), signInRequest.getPassword())

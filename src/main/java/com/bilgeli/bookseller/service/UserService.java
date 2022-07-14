@@ -20,6 +20,7 @@ public class UserService implements IUserService{
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Override
     public User saveUser(User user){
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole(Role.USER);
